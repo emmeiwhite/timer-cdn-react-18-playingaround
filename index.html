@@ -29,10 +29,22 @@
     <script type="text/babel">
       // This is JSX Code!
       function App() {
+        const [time, setTime] = React.useState(new Date().toLocaleTimeString())
+
+        // For SideEffects
+        React.useEffect(() => {
+          const timer = setInterval(() => {
+            setTime(new Date().toLocaleTimeString())
+          }, 1000)
+        }, [])
         return (
           <div>
             <h1>Hello, React!</h1>
             <p>This is rendered using React and JSX!</p>
+
+            <h3>
+              Current Time is: <span>{time}</span>
+            </h3>
           </div>
         )
       }
